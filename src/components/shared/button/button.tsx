@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const Button = () => {
+interface Iprop extends React.HTMLProps<HTMLButtonElement> {};
+
+const Button = (props: Iprop) => {
   return (
-    <div>Button</div>
-  )
-}
+    <div className="col-12">
+      <button className="btn btn-primary w-100" type="submit">
+       {props.title}
+      </button>
+    </div>
+  );
+};
 
-export default Button
+export default Button;
