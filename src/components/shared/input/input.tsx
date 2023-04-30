@@ -1,21 +1,26 @@
 import React from "react";
 
 interface Iprop extends React.HTMLProps<HTMLInputElement> {
-  label: string;
-  error: string | undefined;
+  label: string ;
+  error: boolean;
+  spanData: string | null;
 }
-const Input = ({ label, ...restprop }: Iprop) => {
+
+const Input = ({ label, spanData, error, ...restprop }: Iprop) => {
   return (
     <>
-      <label htmlFor="yourUsername" className="form-label text-capitalize ">
+      <label htmlFor={restprop.id} className="form-label text-capitalize ">
         {label}
       </label>
       <div className="input-group has-validation">
-        <span className="input-group-text" id="inputGroupPrepend">
-          @
-        </span>
+        {spanData && (
+          <span className="input-group-text" id="inputGroupPrepend">
+            {spanData}
+          </span>
+        )}
+
         <input {...restprop} />
-        <div className="invalid-feedback">Please enter your username.</div>
+        {error && <div className="invalid-feedback d-block">{error}</div>}
       </div>
     </>
   );

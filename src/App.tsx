@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import "../src/styles/main.css";
-import LoginForm from "./components/loginForm/loginForm";
+import LoginForm from "./components/loginForm/signIn";
 
 function Root() {
   return (
@@ -24,7 +24,7 @@ function Root() {
                   <LoginForm/>
 
                   <div className="credits">
-                    Designed by{" "}
+                    Designed by
                     <a href="https://bootstrapmade.com/">BootstrapMade</a>
                   </div>
                 </div>
