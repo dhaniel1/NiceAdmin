@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import "../src/styles/main.css";
+// import "../src/styles/main.css";
 import LoginForm from "./components/loginForm/signIn";
 
 function Root() {

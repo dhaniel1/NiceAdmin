@@ -851,7 +851,7 @@ h6 {
 .dashboard .activity .activity-item .activite-label::before {
   content: "";
   position: absolute;
-  right: -11px;
+  right: -9px;
   width: 4px;
   top: 0;
   bottom: 0;

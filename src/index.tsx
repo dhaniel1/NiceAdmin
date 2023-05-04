@@ -1,13 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+
 import { RouterProvider } from "react-router-dom";
-import "./index.css";
-import "./styles/scss/main.scss";
-import reportWebVitals from "./reportWebVitals";
-import { router } from "./routes";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import reportWebVitals from "./reportWebVitals";
+
+import "react-toastify/dist/ReactToastify.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import "./index.css";
+import { router } from "./routes";
+// import "./styles/scss/main.scss";
+
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

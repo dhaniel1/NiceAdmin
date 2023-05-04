@@ -3,9 +3,14 @@ import React, {useEffect} from "react";
 import Chart from "react-apexcharts";
 import 'boxicons';
 import * as Icon from 'react-bootstrap-icons';
+import ReactECharts from 'echarts-for-react';
 
 import Navbar from "../../components/home/navbar";
+import { Dropdown } from "../../components/shared";
 
+// =========================================================================
+// chart data starts here
+// =========================================================================
 const options: any = {
   
   chart: {
@@ -56,6 +61,18 @@ const series: any = [{
   name: 'Customers',
   data: [15, 11, 32, 18, 9, 24, 11]
 }]
+
+// =========================================================================
+// chart data ends here
+// =========================================================================
+
+const DropdownData: DropdownList[] = [
+  {href:"#", value:"Today"},
+  {href:"#", value:"This Month"},
+  {href:"#", value:"This Year"},
+]
+
+
 const style={
   success:'bi bi-circle-fill activity-badge text-success align-self-start',
   danger:'bi bi-circle-fill activity-badge text-danger align-self-start',
@@ -64,6 +81,55 @@ const style={
   warning:'bi bi-circle-fill activity-badge text-warning align-self-start',
   muted:'bi bi-circle-fill activity-badge text-muted align-self-start',
 }
+
+const option={
+  legend: {
+    data: ['Allocated Budget', 'Actual Spending']
+  },
+  radar: {
+    // shape: 'circle',
+    indicator: [{
+        name: 'Sales',
+        max: 6500
+      },
+      {
+        name: 'Administration',
+        max: 16000
+      },
+      {
+        name: 'Information Technology',
+        max: 30000
+      },
+      {
+        name: 'Customer Support',
+        max: 38000
+      },
+      {
+        name: 'Development',
+        max: 52000
+      },
+      {
+        name: 'Marketing',
+        max: 25000
+      }
+    ]
+  },
+  series: [{
+    name: 'Budget vs spending',
+    type: 'radar',
+    data: [{
+        value: [4200, 3000, 20000, 35000, 50000, 18000],
+        name: 'Allocated Budget'
+      },
+      {
+        value: [5000, 14000, 28000, 26000, 42000, 21000],
+        name: 'Actual Spending'
+      }
+    ]
+  }]
+}
+
+
 const Home = () => {
 
   return <>
@@ -81,6 +147,7 @@ const Home = () => {
       </li>
 
       <li className="nav-item">
+        // eslint-disable-next-line jsx-a11y/anchor-is-valid
         <a className="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i className="bi bi-menu-button-wide"></i><span>Components</span><i className="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -465,16 +532,7 @@ const Home = () => {
               <div className="card recent-sales overflow-auto">
 
                 <div className="filter">
-                  <a className="icon" href="#" data-bs-toggle="dropdown"><i className="bi bi-three-dots"></i></a>
-                  <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li className="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a className="dropdown-item" href="#">Today</a></li>
-                    <li><a className="dropdown-item" href="#">This Month</a></li>
-                    <li><a className="dropdown-item" href="#">This Year</a></li>
-                  </ul>
+                  <Dropdown children={undefined} toggleText={"..."} dropdownList={DropdownData} />
                 </div>
 
                 <div className="card-body">
@@ -614,7 +672,7 @@ const Home = () => {
 
           <div className="card">
             <div className="filter">
-              <a className="icon" href="#" data-bs-toggle="dropdown"><i className="bi bi-three-dots"></i></a>
+              {/* <a className="icon" href="#" data-bs-toggle="dropdown"><i className="bi bi-three-dots"></i></a>
               <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                 <li className="dropdown-header text-start">
                   <h6>Filter</h6>
@@ -623,8 +681,8 @@ const Home = () => {
                 <li><a className="dropdown-item" href="#">Today</a></li>
                 <li><a className="dropdown-item" href="#">This Month</a></li>
                 <li><a className="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
+              </ul> */}
+             </div>
 
             <div className="card-body">
               <h5 className="card-title">Recent Activity <span>| Today</span></h5>
@@ -702,7 +760,11 @@ const Home = () => {
             <div className="card-body pb-0">
               <h5 className="card-title">Budget Report <span>| This Month</span></h5>
 
-              <div id="budgetChart" style={{minHeight: "400px"}} className="echart"></div>
+              <div id="budgetChart" style={{minHeight: "400px"}} className="echart">
+              <ReactECharts option={option} showLoading={true}/>
+              </div>
+
+             
 
               {/* <script>
                 document.addEventListener("DOMContentLoaded", () => {
