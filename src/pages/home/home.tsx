@@ -129,6 +129,46 @@ const option={
   }]
 }
 
+const optionWebsiteTraffic = {
+    legend: {
+      orient: 'horizontal',
+      x: 'center',
+      y:'start',
+      data: ['Search Engine', 'Direct', 'Email', 'Union Ads', 'Video Ads'],
+      top: 0
+    },
+    series: [
+      {
+        type: 'pie',
+        radius: ['45%', '90%'],
+        avoidLabelOverlap: true,
+        label: {
+          show: false,
+          position: 'center'
+        },
+        labelLine: {
+          show: false
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: '30',
+            fontWeight: 'bold'
+          }
+        },
+        top: 10,
+        data: [
+          { value: 335, name: 'Search Engine' },
+          { value: 310, name: 'Direct' },
+          { value: 234, name: 'Email' },
+          { value: 135, name: 'Union Ads' },
+          { value: 1548, name: 'Video Ads' }
+        ]
+      }
+    ],
+    // height: '320px',
+  };
+
 
 const Home = () => {
 
@@ -519,7 +559,7 @@ const Home = () => {
                   <h5 className="card-title">Reports <span>/Today</span></h5>
 
                   
-                  <Chart options={options} series={series} type="line" width="100%" />
+                  <Chart options={options} series={series} type="line" width="100%" height={'320px'} />
 
                   
 
@@ -761,7 +801,7 @@ const Home = () => {
               <h5 className="card-title">Budget Report <span>| This Month</span></h5>
 
               <div id="budgetChart" style={{minHeight: "400px"}} className="echart">
-              <ReactECharts option={option} showLoading={true}/>
+              <ReactECharts option={option}/>
               </div>
 
              
@@ -838,7 +878,8 @@ const Home = () => {
             <div className="card-body pb-0">
               <h5 className="card-title">Website Traffic <span>| Today</span></h5>
 
-              <div id="trafficChart" style={{minHeight: "400px"}} className="echart"></div>
+              {/* <div id="trafficChart" style={{minHeight: "400px"}} className="echart"></div> */}
+              <ReactECharts option={optionWebsiteTraffic} />
 
               {/* <script>
                 document.addEventListener("DOMContentLoaded", () => {
