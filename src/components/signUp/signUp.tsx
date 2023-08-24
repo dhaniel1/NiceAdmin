@@ -22,9 +22,8 @@ const validationSchema: ObjectSchema<{
 }> = object().shape({
   name: string().required("Name is required"),
   username: string()
-    .min(3, "Password must be a minimum of 3 characters")
-    .max(7, "Password must be a maximum of 7 characters")
-    .required("Username is required"),
+    .required("Username is required")
+    .min(3, "Password must be a minimum of 3 characters"),
   email: string().email("Invalid email").required("Email is required"),
   password: string()
     .min(6, "Password must be a minimum of 8 characters")
@@ -38,12 +37,12 @@ const SignUp = () => {
     initialValues,
     validationSchema,
     onSubmit() {
-      alert(/* JSON.stringify(values, null, 2) */ "Form Submitted");
+      alert(JSON.stringify(values, null, 2));
     },
   });
 
   const queryFn = async (data: { [key: string]: any }) => {
-    const url = "https://api.medixab.net/api/v1/Account/authenticate";
+    const url = "url_to_endpoint_";
 
     const response = await fetch(url, {
       method: "POST",
@@ -58,6 +57,7 @@ const SignUp = () => {
     }
     return response;
   };
+
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ["signUppostJSON"],
     queryFn,
@@ -73,7 +73,8 @@ const SignUp = () => {
                 <div className="d-flex justify-content-center py-4">
                   <a
                     href="index.html"
-                    className="logo d-flex align-items-center w-auto">
+                    className="logo d-flex align-items-center w-auto"
+                  >
                     <img src="assets/img/logo.png" alt="" />
                     <span className="d-none d-lg-block">NiceAdmin</span>
                   </a>
@@ -94,7 +95,8 @@ const SignUp = () => {
                     <form
                       onSubmit={handleSubmit}
                       className="row g-3 needs-validation"
-                      noValidate>
+                      noValidate
+                    >
                       <div className="col-12">
                         <Input
                           label={"Your Name"}
@@ -167,7 +169,8 @@ const SignUp = () => {
                           />
                           <label
                             className="form-check-label"
-                            htmlFor="acceptTerms">
+                            htmlFor="acceptTerms"
+                          >
                             I agree and accept the{" "}
                             <a href="#">terms and conditions</a>
                           </label>

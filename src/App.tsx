@@ -15,13 +15,14 @@ function Root() {
                   <div className="d-flex justify-content-center py-4">
                     <a
                       href="index.html"
-                      className="logo d-flex align-items-center w-auto">
+                      className="logo d-flex align-items-center w-auto"
+                    >
                       <img src="assets/img/logo.png" alt="" />
                       <span className="d-none d-lg-block">NiceAdmin</span>
                     </a>
                   </div>
 
-                  <LoginForm/>
+                  <LoginForm />
 
                   <div className="credits">
                     Designed by
@@ -34,14 +35,6 @@ function Root() {
         </div>
       </main>
       {/* <!-- End #main --> */}
-
-      <a
-        href="/"
-        className="back-to-top d-flex align-items-center justify-content-center">
-        <i className="bi bi-arrow-up-short"></i>
-      </a>
-
-      
     </>
   );
 }

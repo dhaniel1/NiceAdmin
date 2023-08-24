@@ -1,7 +1,7 @@
 import React from "react";
 
 interface Iprop extends React.HTMLProps<HTMLInputElement> {
-  label: string ;
+  label: string;
   error: boolean;
   spanData: string | null;
 }

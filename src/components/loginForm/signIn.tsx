@@ -12,6 +12,7 @@ const validationSchema: ObjectSchema<{
   email: string;
   password: string;
 }> = object().shape({
+  // This object could be placed outside if it gets to large
   email: string().email("Invalid email").required("Email is required"),
   password: string()
     .min(8, "Password must be a minimum of 8 characters")
@@ -27,6 +28,8 @@ const initialValues = {
 
 const SignIn = () => {
   const navigate = useNavigate();
+
+  //initializing formik
   const { handleChange, handleSubmit, values, errors, touched } = useFormik({
     initialValues,
     validationSchema,
@@ -88,10 +91,11 @@ const SignIn = () => {
         <form
           onSubmit={handleSubmit}
           className="row g-3 needs-validation"
-          noValidate>
+          noValidate
+        >
           <div className="col-12">
             <Input
-              label={"email"}
+              label="email"
               type="text"
               name="email"
               className="form-control loginForm__input"
@@ -106,7 +110,7 @@ const SignIn = () => {
 
           <div className="col-12">
             <Input
-              label={"password"}
+              label="password"
               type="text"
               name="password"
               className="form-control loginForm__input"
@@ -137,7 +141,7 @@ const SignIn = () => {
           <div className="col-12">
             <p className="small mb-0">
               Don't have account?
-              <Link to={path.dashboard.path}>Create an account</Link>
+              <Link to={path.signUp.path}>Create an account</Link>
             </p>
           </div>
         </form>
